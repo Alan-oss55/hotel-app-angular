@@ -8,7 +8,8 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'list', component: ReservationListComponent},
   {path: 'new', component: ReservationFormComponent},
-  {path: '**', redirectTo: '', pathMatch: 'full'},
+  // {path: '**', redirectTo: '', pathMatch: 'full'},
+  {path: 'edit/:id', component: ReservationFormComponent}
 ];
 
 @NgModule({

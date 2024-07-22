@@ -16,17 +16,17 @@ export class ReservationService {
   //CRUD
   getReservations() : Reservation[]{  
     return this.reservations;
-    localStorage.setItem("reservations", JSON.stringify(this.reservations))
-
    }
 
   getReservation(id: string) : Reservation | undefined{ 
     return this.reservations.find(res => res.id === id)
-    localStorage.setItem("reservations", JSON.stringify(this.reservations))
 
   }
 
   addReservation(reservation: Reservation): void  { 
+
+    reservation.id = Date.now().toString();
+
     this.reservations.push(reservation);
     localStorage.setItem("reservations", JSON.stringify(this.reservations))
   }
@@ -38,9 +38,9 @@ export class ReservationService {
 
   }
 
-  updateReservsation(updateReservsation: Reservation): void{
-    let index = this.reservations.findIndex(res => res.id === updateReservsation.id);
-    this.reservations[index] = updateReservsation;
+  updateReservation(id: string, updateReservation: Reservation): void{
+    let index = this.reservations.findIndex(res => res.id === id);
+    this.reservations[index] = updateReservation;
     localStorage.setItem("reservations", JSON.stringify(this.reservations))
 
   }
