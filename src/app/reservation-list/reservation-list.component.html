@@ -1,21 +1,21 @@
 <app-home></app-home>
 
-<h3 class="mt-5 mb-3">Reservations List</h3>
+<h3 class="mt-5 mb-3">Lista de reservas</h3>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Room</th>
+            <th>Nombre</th>
+            <th>Gmail</th>
+            <th>Habitación</th>
             <th>Check In</th>
             <th>Check  Out</th>
-            <th>Actions</th>
+            <th>Acciones</th>
         </tr>
     </thead>
 
 
-<tbody>
+<tbody *ngIf="reservations ;else noReservations" >
     <tr *ngFor="let reservation of reservations">
         <td>{{reservation.guestName}}</td>
         <td>{{reservation.guestEmail}}</td>
@@ -27,9 +27,12 @@
             <button class="btn btn-secondary mx-1" [routerLink]="['/edit', reservation.id]">Edit</button>
         </td>
     </tr>
+
 </tbody>
+<ng-template #noReservations>
+    <tr>
+        <td colspan="6" class="text-center">No reservation available</td>
+    </tr>
+</ng-template> 
 </table>
 
-<ng-template #noReservations>
-    <p>No reservation available</p>
-</ng-template>
